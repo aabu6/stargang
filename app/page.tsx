@@ -1,103 +1,381 @@
+// "use client";
+// import Image from "next/image";
+// import Scene from "../components/Scene";
+// const Scene = dynamic(() => import("../components/Scene"));
+// import Galaxy from "@/components/Galaxy/Galaxy";
+// import { Albums } from "@/components/Albums";
+// import Landing from "@/components/Landing";
+// import About from "@/components/About";
+// import { useScroll } from "framer-motion";
+// import CylinderScene from "@/components/SceneCylinder";
+// import { useRef } from "react";
+// import Stack from "@/components/Stack";
+// import ImageGallery from "@/components/SmoothScrollHero";
+// import Horizontal from "@/components/Horizontal";
+// import ParallaxIntro from "@/components/ParallaxIntro";
+// import ParallaxDescription from "@/components/ParallaxDescription";
+// import ParallaxSection from "@/components/ParallaxSection";
+// import { Streaming } from "@/components/Streaming";
+// import TextMask from "@/components/TextMask";
+// import dynamic from "next/dynamic";
+// export default function Home() {
+//    const container = useRef(null);
+//    // const containernext = useRef(null);
+//    const { scrollYProgress } = useScroll({
+//       target: container,
+//       offset: ["start start", "end end"],
+//    });
+//    // const { scrollYProgress: scrollY } = useScroll({
+//    //    target: containernext,
+//    // });
+
+//    // sample data
+//    const projects = [
+//       {
+//          title: "Om Mani Padme Hum",
+//          description:
+//             "Om Mane Padme Hum by Bluesss, you may enjoy the rest of this album for its artistically rich and emotionally resonant tracks that reflect a similar depth and musical style. Each song is crafted to engage listeners not only musically but also emotionally and spiritually.ongs combine smooth melodies with thoughtful storytelling, often carrying an intimate and soulful vibe. The music showcases meticulous craftsmanship and a blend of various musical styles, creating a unique and engaging listening experience.",
+//          src: "/iamstar.jpg",
+//          link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
+//          color: "#efefef",
+//       },
+//       {
+//          title: "Adhi Raati",
+//          description:
+//             "This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes”—so French photographer Clément Chapillon describes his latest highly captivating project Les rochers fauves (French for ‘The tawny rocks’ ).",
+//          src: "/aadhirati.jpg",
+//          link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
+//          color: "#977F6D",
+//       },
+//       {
+//          title: "Chahanaley X Yoddha",
+//          description:
+//             "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
+//          src: "/chahanaley.jpg",
+//          link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
+//          color: "#efefef",
+//       },
+//       {
+//          title: "Aaudina Ma Ghar",
+//          description:
+//             "The coastlines of Denmark are documented in tonal colors in a pensive new series by Danish photographers Ulrik Hasemann and Mathias Svold; an ongoing project investigating how humans interact with and disrupt the Danish coast.",
+//          src: "/aaudinamaghar.jpg",
+//          link: "https://www.ignant.com/2019/03/13/a-photographic-series-depicting-the-uncertain-future-of-denmarks-treasured-coastlines/",
+//          color: "#977F6D",
+//       },
+//       {
+//          title: "Love Language",
+//          description:
+//             "Dutch photographer Mark Rammers has shared with IGNANT the first chapter of his latest photographic project, ‘all over again’—captured while in residency at Hektor, an old farm in Los Valles, Lanzarote. Titled ‘Beginnings’, the mesmerizing collection of images is a visual and meditative journey into the origins of regrets and the uncertainty of stepping into new unknowns.",
+//          src: "/lovelang.jpg",
+//          link: "https://www.ignant.com/2023/04/12/mark-rammers-all-over-again-is-a-study-of-regret-and-the-willingness-to-move-forward/",
+//          color: "#efefef",
+//       },
+//    ];
+
+//    const stack = useRef(null);
+//    const { scrollYProgress: stackProgress } = useScroll({
+//       target: stack,
+//       offset: ["start start", "end end"],
+//    });
+
+//    // masking
+//    const maskContainer = useRef(null);
+//    const stickyMask = useRef(null);
+
+//    const initialMaskSize = 0.8;
+//    const targetMaskSize = 30;
+//    const easing = 0.15;
+//    let easedScrollProgress = 0;
+
+//    const animate = () => {
+//       const maskSizeProgress = targetMaskSize * getScrollProgress();
+//       stickyMask.current.style.webkitMaskSize =
+//          (initialMaskSize + maskSizeProgress) * 100 + "%";
+//       requestAnimationFrame(animate);
+//    };
+
+//    const getScrollProgress = () => {
+//       const scrollProgress =
+//          stickyMask.current.offsetTop /
+//          (container.current.getBoundingClientRect().height -
+//             window.innerHeight);
+//       const delta = scrollProgress - easedScrollProgress;
+//       easedScrollProgress += delta * easing;
+//       return easedScrollProgress;
+//    };
+//    return (
+//       <main className="">
+//          {/* <h1>EHello</h1> */}
+//          <ParallaxIntro />
+//          <ParallaxDescription />
+//          <ParallaxSection />
+//          <section className="flex h-[100vh]">
+//             <Scene />
+//          </section>{" "}
+//          {/* <div
+//             style={{ width: "100%", height: "600px", position: "relative" }}
+//             className="bg-black"
+//          >
+//             <Galaxy
+//                mouseRepulsion={true}
+//                mouseInteraction={true}
+//                density={1.5}
+//                glowIntensity={0.5}
+//                hueShift={240}
+//             />
+//          </div> */}
+//          {/* <section className="h-[100vh]">
+//             <h1>Projects</h1>
+//             </section> */}
+//          <ImageGallery />
+//          <Albums />
+//          <section className="relative h-[200vh]" ref={container}>
+//             <Landing scrollYProgress={scrollYProgress} />
+//             <About scrollYProgress={scrollYProgress} />
+//          </section>
+//          <Horizontal />
+//          {/* <section className="relative h-[200vh]" ref={containernext}>
+//             <Landing scrollYProgress={scrollY} />
+//             <About scrollYProgress={scrollY} />
+//          </section> */}
+//          <section ref={stack} className="pt-[8vh] bg-black">
+//             <h4 className="text-[8rem] text-gray-50 text-center uppercase">
+//                Latest Release
+//             </h4>
+//             {projects.map((project, i) => {
+//                const targetScale = 1 - (projects.length - 1 - i) * 0.05;
+//                // test
+//                const multiplier = 100 / projects.length - 1 / 100;
+//                return (
+//                   <Stack
+//                      key={`p_${i}`}
+//                      i={i}
+//                      {...project}
+//                      progress={scrollYProgress}
+//                      // range={[i * 0.2, 1]}
+//                      range={[i * multiplier, 1]}
+//                      targetScale={targetScale}
+//                   />
+//                );
+//             })}
+//          </section>
+//          <Streaming />
+//          <TextMask />
+//          {/* Splitmasking */}
+//       </main>
+//    );
+// }
+
+"use client";
+
 import Image from "next/image";
+import { Suspense, useMemo, useRef, startTransition } from "react";
+import { useScroll } from "framer-motion";
+import dynamic from "next/dynamic";
+
+// Lazy load heavy components with proper loading states
+const Scene = dynamic(() => import("../components/Scene"), {
+   loading: () => <div className="h-[100vh] bg-gray-900 animate-pulse" />,
+   ssr: false, // 3D scenes typically don't need SSR
+});
+
+const Galaxy = dynamic(() => import("@/components/Galaxy/Galaxy"), {
+   loading: () => <div className="h-[600px] bg-black animate-pulse" />,
+   ssr: false,
+});
+
+// Group related components for better code splitting
+const ParallaxComponents = dynamic(
+   () =>
+      Promise.all([
+         import("@/components/ParallaxIntro"),
+         import("@/components/ParallaxDescription"),
+         import("@/components/ParallaxSection"),
+      ]).then(([intro, description, section]) => ({
+         default: () => (
+            <>
+               <intro.default />
+               <description.default />
+               <section.default />
+            </>
+         ),
+      })),
+   {
+      loading: () => <div className="h-[200vh] bg-gray-900 animate-pulse" />,
+   }
+);
+
+// Static imports for above-the-fold content
+import { Albums } from "@/components/Albums";
+import Landing from "@/components/Landing";
+import About from "@/components/About";
+import Stack from "@/components/Stack";
+import ImageGallery from "@/components/SmoothScrollHero";
+import Horizontal from "@/components/Horizontal";
+import { Streaming } from "@/components/Streaming";
+import TextMask from "@/components/TextMask";
+
+// Move static data outside component to prevent recreation
+const PROJECTS_DATA = [
+   {
+      title: "Om Mani Padme Hum",
+      description:
+         "Om Mane Padme Hum by Bluesss, you may enjoy the rest of this album for its artistically rich and emotionally resonant tracks that reflect a similar depth and musical style. Each song is crafted to engage listeners not only musically but also emotionally and spiritually.ongs combine smooth melodies with thoughtful storytelling, often carrying an intimate and soulful vibe. The music showcases meticulous craftsmanship and a blend of various musical styles, creating a unique and engaging listening experience.",
+      src: "/iamstar.jpg",
+      link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
+      color: "#efefef",
+   },
+   {
+      title: "Adhi Raati",
+      description:
+         "Om Mane Padme Hum by Bluesss, you may enjoy the rest of this album for its artistically rich and emotionally resonant tracks that reflect a similar depth and musical style. Each song is crafted to engage listeners not only musically but also",
+      src: "/aadhirati.jpg",
+      link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
+      color: "#977F6D",
+   },
+   {
+      title: "Chahanaley X Yoddha",
+      description:
+         "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal, they're encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
+      src: "/chahanaley.jpg",
+      link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
+      color: "#efefef",
+   },
+   {
+      title: "Aaudina Ma Ghar",
+      description:
+         "The coastlines of Denmark are documented in tonal colors in a pensive new series by Danish photographers Ulrik Hasemann and Mathias Svold; an ongoing project investigating how humans interact with and disrupt the Danish coast.",
+      src: "/aaudinamaghar.jpg",
+      link: "https://www.ignant.com/2019/03/13/a-photographic-series-depicting-the-uncertain-future-of-denmarks-treasured-coastlines/",
+      color: "#977F6D",
+   },
+   {
+      title: "Love Language",
+      description:
+         "Dutch photographer Mark Rammers has shared with IGNANT the first chapter of his latest photographic project, 'all over again'—captured while in residency at Hektor, an old farm in Los Valles, Lanzarote. Titled 'Beginnings', the mesmerizing collection of images is a visual and meditative journey into the origins of regrets and the uncertainty of stepping into new unknowns.",
+      src: "/lovelang.jpg",
+      link: "https://www.ignant.com/2023/04/12/mark-rammers-all-over-again-is-a-study-of-regret-and-the-willingness-to-move-forward/",
+      color: "#efefef",
+   },
+] as const;
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+   const container = useRef<HTMLElement>(null);
+   const stack = useRef<HTMLElement>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+   // Memoize scroll progress calculations
+   const { scrollYProgress } = useScroll({
+      target: container,
+      offset: ["start start", "end end"],
+   });
+
+   const { scrollYProgress: stackProgress } = useScroll({
+      target: stack,
+      offset: ["start start", "end end"],
+   });
+
+   // Memoize heavy calculations
+   const projectsWithCalculations = useMemo(() => {
+      const multiplier = 100 / (PROJECTS_DATA.length - 1) / 100;
+
+      return PROJECTS_DATA.map((project, i) => ({
+         ...project,
+         targetScale: 1 - (PROJECTS_DATA.length - 1 - i) * 0.05,
+         range: [i * multiplier, 1] as [number, number],
+         index: i,
+      }));
+   }, []);
+
+   // Memoize masking refs and functions
+   const maskContainer = useRef<HTMLDivElement>(null);
+   const stickyMask = useRef<HTMLDivElement>(null);
+
+   const maskingConfig = useMemo(
+      () => ({
+         initialMaskSize: 0.8,
+         targetMaskSize: 30,
+         easing: 0.15,
+      }),
+      []
+   );
+
+   return (
+      <main className="">
+         <Suspense
+            fallback={<div className="h-screen bg-gray-900 animate-pulse" />}
+         >
+            <ParallaxComponents />
+         </Suspense>
+
+         <Suspense
+            fallback={<div className="h-[100vh] bg-gray-900 animate-pulse" />}
+         >
+            <section className="flex h-[100vh]">
+               <Scene />
+            </section>
+         </Suspense>
+
+         <Suspense
+            fallback={<div className="h-[50vh] bg-gray-900 animate-pulse" />}
+         >
+            <ImageGallery />
+         </Suspense>
+
+         <Suspense
+            fallback={<div className="h-[50vh] bg-gray-900 animate-pulse" />}
+         >
+            <Albums />
+         </Suspense>
+
+         <section className="relative h-[200vh]" ref={container}>
+            <Landing scrollYProgress={scrollYProgress} />
+            <About scrollYProgress={scrollYProgress} />
+         </section>
+
+         <Suspense
+            fallback={<div className="h-[50vh] bg-gray-900 animate-pulse" />}
+         >
+            <Horizontal />
+         </Suspense>
+
+         <section ref={stack} className="pt-[8vh] bg-black">
+            <h4 className="text-[8rem] text-gray-50 text-center uppercase">
+               Latest Release
+            </h4>
+            {projectsWithCalculations.map((project) => (
+               <Suspense
+                  key={`p_${project.index}`}
+                  fallback={
+                     <div className="h-[100vh] bg-gray-800 animate-pulse" />
+                  }
+               >
+                  <Stack
+                     i={project.index}
+                     title={project.title}
+                     description={project.description}
+                     src={project.src}
+                     link={project.link}
+                     color={project.color}
+                     progress={stackProgress}
+                     range={project.range}
+                     targetScale={project.targetScale}
+                  />
+               </Suspense>
+            ))}
+         </section>
+
+         <Suspense
+            fallback={<div className="h-[50vh] bg-gray-900 animate-pulse" />}
+         >
+            <Streaming />
+         </Suspense>
+
+         <Suspense
+            fallback={<div className="h-[50vh] bg-gray-900 animate-pulse" />}
+         >
+            <TextMask />
+         </Suspense>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+   );
 }
