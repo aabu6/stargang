@@ -6,7 +6,7 @@ export default function Cyl() {
    let tex = useTexture("/cylinder.png");
    let cyl = useRef(null);
 
-   useFrame((state: string, delta: number) => {
+   useFrame((delta: any) => {
       cyl.current.rotation.y += delta;
    });
    return (
