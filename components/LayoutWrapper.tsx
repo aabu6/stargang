@@ -49,7 +49,6 @@ import { AnimatePresence } from "framer-motion";
 import { ReactLenis } from "../lib/lenis";
 import Header from "../components/header";
 import { ThemeProvider } from "next-themes";
-// import Nav from "./Nav";
 
 import Preloader from "./Preloader/index";
 
@@ -74,14 +73,12 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
          enableSystem
          disableTransitionOnChange
       >
-         {/* <Nav /> */}
          <ReactLenis root>
             <AnimatePresence mode="wait">
                {isLoading ? (
                   <Preloader key="preloader" />
                ) : (
                   <>
-                     {/* <Nav /> */}
                      <Header />
                      {children}
                   </>
