@@ -125,11 +125,9 @@ export const Albums: React.FC = () => {
       <section className="bg-black lg:my-[2rem] rounded-tl-[6rem] rounded-tr-[6rem]">
          <div className="mx-auto max-w-5xl">
             <header>
-               <Reveal>
-                  <h4 className="font-humane text-[#fff] uppercase text-[7rem] text-center">
-                     Albums
-                  </h4>
-               </Reveal>
+               <h4 className="font-humane text-[#fff] uppercase text-[7rem] text-center">
+                  Albums
+               </h4>
             </header>
             <Link
                heading="Blue Up High"

@@ -9,7 +9,6 @@ export default function Body({
    setSelectedLink,
    setIsActive,
 }: any) {
-   console.log("THis is the link", links, selectedLink, setSelectedLink);
    const getChars = (word: any) => {
       let chars: any = [];
       word.split("").forEach((char: any, i: number) => {

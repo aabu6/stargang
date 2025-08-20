@@ -10,8 +10,8 @@ export default function ParallaxDescription() {
    useGSAP(() => {
       gsap.registerPlugin(ScrollTrigger, SplitText);
       const splitElements = document.querySelectorAll(".reveal-text");
-      const splitInstances = [];
-      const scrollTriggers = [];
+      const splitInstances = [] as any;
+      const scrollTriggers = [] as any;
 
       splitElements.forEach((el) => {
          const splitText = SplitText.create(el, { type: "chars" });
@@ -36,8 +36,8 @@ export default function ParallaxDescription() {
          scrollTriggers.push(tween.scrollTrigger);
       });
       return () => {
-         scrollTriggers.forEach((st) => st.kill());
-         splitInstances.forEach((inst) => inst.revert());
+         scrollTriggers.forEach((st: any) => st.kill());
+         splitInstances.forEach((inst: any) => inst.revert());
          gsap.killTweensOf("*");
       };
    });

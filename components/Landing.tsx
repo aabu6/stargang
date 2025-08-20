@@ -28,11 +28,9 @@ const Landing = ({ scrollYProgress }: any) => {
          </div>
 
          <div className="relative z-10 text-center">
-            <Reveal animateonScroll={true} delay={0.2}>
-               <h1 className="text-6xl sm:text-5xl md:text-9xl  mb-4 uppercase font-vanguard">
-                  Arko Barsha{" "}
-               </h1>
-            </Reveal>
+            <h1 className="text-6xl sm:text-5xl md:text-9xl  mb-4 uppercase font-vanguard">
+               Arko Barsha{" "}
+            </h1>
          </div>
       </motion.section>
    );

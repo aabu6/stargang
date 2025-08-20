@@ -1,9 +1,9 @@
 "use client";
 import styles from "./style.module.css";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 
-const anim = {
+const anim: Variants = {
    initial: { width: 0 },
    open: {
       width: "auto",

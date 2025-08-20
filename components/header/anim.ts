@@ -1,4 +1,6 @@
-const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
+import { cubicBezier, Variants } from "framer-motion";
+
+const transition = { duration: 1, ease: cubicBezier(0.76, 0, 0.24, 1) };
 
 export const opacity = {
    initial: {
@@ -14,12 +16,12 @@ export const opacity = {
    },
 };
 
-export const height = {
+export const height: Variants = {
    initial: {
       height: 0,
    },
    enter: {
-      height: "auto",
+      height: "auto" as any,
       transition,
    },
    exit: {
@@ -59,7 +61,7 @@ export const blur = {
    },
 };
 
-export const translate = {
+export const translate: Variants = {
    initial: {
       y: "100%",
       opacity: 0,

@@ -16,11 +16,10 @@ export default function Horizontal() {
          <div className="text-center  ">
             {/* <span className="font-outfit text-gray-400 ">stargangvibes.</span> */}
 
-            <Reveal>
-               <h3 className="text-7xl uppercase   font-vanguard lg:text-8xl">
-                  Merch Series{" "}
-               </h3>
-            </Reveal>
+            <h3 className="text-7xl uppercase   font-vanguard lg:text-8xl">
+               Merch Series{" "}
+            </h3>
+
             <div>
                <article ref={targetRef} className="relative h-[300vh]">
                   <div className="sticky top-[50px] flex  h-[75vh] lg:h-screen items-center overflow-hidden">

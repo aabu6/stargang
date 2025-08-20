@@ -1,21 +1,28 @@
 "use client";
-import React, { useRef } from "react";
+import React, { ReactElement, ReactNode, useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
+interface RevealProps {
+   children: ReactNode;
+   animateOnScroll?: boolean;
+   delay?: number;
+}
+
+type SplitTextInstance = ReturnType<typeof SplitText.create>;
 
 export default function Reveal({
    children,
    animateOnScroll = true,
    delay = 0,
-}: any) {
+}: RevealProps): ReactElement {
    const containerRef = useRef<HTMLDivElement>(null);
-   const elementRef = useRef([]);
-   const splitRef = useRef([]);
-   const lines = useRef([]);
+   const elementRef = useRef<HTMLElement[]>([]);
+   const splitRef = useRef<HTMLElement[]>([]);
+   const lines = useRef<HTMLElement[]>([]);
 
    useGSAP(
       () => {
@@ -32,23 +39,26 @@ export default function Reveal({
             elements = [containerRef.current];
          }
 
-         elements.forEach((element) => {
+         elements.forEach((element: any) => {
             elementRef.current.push(element);
             const split = SplitText.create(element, {
                type: "lines",
                mask: "lines",
                linesClass: "line++",
             });
+            // @ts-ignore
             splitRef.current.push(split);
 
             const computedStyle = window.getComputedStyle(element);
             const textIndent = computedStyle.textIndent;
             if (textIndent && textIndent === "0px") {
                if (split.lines.length > 0) {
-                  split.lines[0].style.paddingLeft = textIndent;
+                  (split.lines[0] as HTMLElement).style.paddingLeft =
+                     textIndent;
                }
                element.style.textIndent = "0";
             }
+            // @ts-ignore
             lines.current.push(...split.lines);
          });
 
@@ -73,7 +83,7 @@ export default function Reveal({
             gsap.to(lines.current, animationProps);
          }
          return () => {
-            splitRef.current.forEach((split) => {
+            splitRef.current.forEach((split: any) => {
                if (split) {
                   split.revert();
                }
@@ -87,6 +97,7 @@ export default function Reveal({
    );
    //    return React.cloneElement(children, { ref: containerRef });
    if (React.Children.count(children) === 1) {
+      // @ts-ignore
       return React.cloneElement(children, { ref: containerRef });
    }
    return (

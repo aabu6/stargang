@@ -2,16 +2,9 @@
 import Gallery from "../../components/Gallery";
 import { useSpring } from "framer-motion";
 import Description from "../../components/Mask";
-import Project from "../../components/project";
-import ParallaxDescription from "@/components/ParallaxDescription";
-import Reveal from "@/components/Reveal";
-import { SplitText } from "gsap/SplitText";
-import CylinderScene from "@/components/SceneCylinder";
-// import { Albums } from "@/components/Albums";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import CylinderScene from "@/components/SceneCylinder";
+
 import CircularText from "@/components/CircularText";
 import { Streaming } from "@/components/Streaming";
 const projects = [
@@ -27,10 +20,6 @@ const projects = [
       name: "love Language",
       handle: "leidinger_matthias",
    },
-   // {
-   //    name: "Mark Rammers",
-   //    handle: "mark_rammers",
-   // },
 ];
 
 const musics = [
@@ -86,11 +75,6 @@ export default function Albums() {
          {/* <ParallaxDescription /> */}
          <section className="py-[9rem]">
             <div className="flex justify-center ">
-               {/* <p className="text-[6vw] uppercase text-center max-w-[80vw] leading-none reveal-text">
-                  Stargang is a fresh wave in Nepalese music a label shaping the
-                  utopian age where creativity, culture, and community come
-                  together.
-               </p> */}
                <p className="text-[4.5vw] uppercase text-center max-w-[80vw] leading-none  ">
                   Stargang is a fresh wave in Nepalese music a label shaping the
                   utopian age where creativity, culture, and community come
